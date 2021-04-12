@@ -38,6 +38,7 @@ namespace NetDpiApp
             this.ClientSize = new System.Drawing.Size(774, 449);
             this.Name = "MainForm";
             this.Text = "NetDpiApp";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
