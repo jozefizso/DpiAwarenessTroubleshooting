@@ -4,6 +4,30 @@
 > to be set or reported.
 
 
+## `DPI_AWARENESS` enum (windef.h)
+
+```cpp
+typedef enum DPI_AWARENESS {
+    DPI_AWARENESS_INVALID           = -1,
+    DPI_AWARENESS_UNAWARE           = 0,
+    DPI_AWARENESS_SYSTEM_AWARE      = 1,
+    DPI_AWARENESS_PER_MONITOR_AWARE = 2
+} DPI_AWARENESS;
+```
+
+Equivalent enum defined in our code:
+
+```csharp
+public enum DPI_AWARENESS
+{
+	INVALID = 0,
+	UNAWARE = 1,
+	SYSTEM_AWARE = 2,
+	PER_MONITOR_AWARE = 3
+}
+```
+
+
 ## Getting Started
 
 Run the *NetDpiApp* Win Forms application and observe the output from
