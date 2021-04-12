@@ -23,9 +23,9 @@ namespace NetDpiApp
 
     public enum DPI_AWARENESS
     {
-        INVALID = 0,
-        UNAWARE = 1,
-        SYSTEM_AWARE = 2,
-        PER_MONITOR_AWARE = 3
+        INVALID = -1,
+        UNAWARE = 0,
+        SYSTEM_AWARE = 1,
+        PER_MONITOR_AWARE = 2
     }
 }
