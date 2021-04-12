@@ -3,8 +3,24 @@
 #include <iostream>
 #include <windows.h>
 
+#define VAR_NAME(x) (#x)
+
+void DebugDpiAwareness(DPI_AWARENESS_CONTEXT dpiContext, const char *dpiContextName, const char *expectedAwarenessName)
+{
+    DPI_AWARENESS_CONTEXT prev0 = SetThreadDpiAwarenessContext(dpiContext);
+    DPI_AWARENESS_CONTEXT currentContext = GetThreadDpiAwarenessContext();
+    DPI_AWARENESS actualAwareness = GetAwarenessFromDpiAwarenessContext(currentContext);
+
+    std::cout << "DPI Context: " << dpiContextName << ", expected " << expectedAwarenessName << ", actual awareness (" << (int)actualAwareness << ")\n";
+}
+
 int main()
 {
+    DebugDpiAwareness(DPI_AWARENESS_CONTEXT_UNAWARE, VAR_NAME(DPI_AWARENESS_CONTEXT_UNAWARE), "UNAWARE");
+    DebugDpiAwareness(DPI_AWARENESS_CONTEXT_SYSTEM_AWARE, VAR_NAME(DPI_AWARENESS_CONTEXT_SYSTEM_AWARE), "SYSTEM_AWARE");
+    DebugDpiAwareness(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE, VAR_NAME(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE), "PER_MONITOR_AWARE");
+    DebugDpiAwareness(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2, VAR_NAME(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2), "PER_MONITOR_AWARE");
+
     DPI_AWARENESS_CONTEXT unaware = DPI_AWARENESS_CONTEXT_UNAWARE;
     DPI_AWARENESS_CONTEXT system = DPI_AWARENESS_CONTEXT_SYSTEM_AWARE;
     DPI_AWARENESS_CONTEXT perMonitor = DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE;
